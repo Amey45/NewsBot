@@ -19,11 +19,7 @@ exports.register = async (req, res, next) => {
     //   return res.status(400).json({ msg: "Invalid email" });
     // }'
 
-    console.log(req.body);
-
     const users = await User.find({ email: req.body.email }).exec();
-
-    console.log("users", users);
 
     if (users.length != 0) {
       return res.status(409).json({

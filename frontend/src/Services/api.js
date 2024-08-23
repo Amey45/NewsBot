@@ -29,7 +29,6 @@ export const fetchChats = async () => {
         authorization: localStorage.getItem("token"),
       },
     });
-    console.log("response: s", response);
     return response.data;
   } catch (error) {
     console.error("Error fetching chats", error);
@@ -44,7 +43,6 @@ export const getNews = async (data) => {
         authorization: localStorage.getItem("token"),
       },
     });
-    console.log("articles: ", response.articles);
     return response.data.articles;
   } catch (error) {
     console.error("Error fetching news", error);

@@ -9,7 +9,6 @@ exports.getAllChats = async (req, res, next) => {
   await Chat.find({ userId: req.userId })
     .exec()
     .then((chats) => {
-      console.log(chats);
       res.status(200).send(chats);
     })
     .catch((err) => {
@@ -33,7 +32,6 @@ exports.createChat = async (req, res, next) => {
 
   try {
     const response = await newChat.save();
-    console.log(response);
     res.status(200).json({
       message: "topic stored successfully",
       chat: response,
@@ -50,7 +48,6 @@ exports.getNews = async (req, res, next) => {
   const userId = req.userId;
   const query = req.body.query;
 
-  console.log("first query: " + query);
 
   try {
     const response = await newsapi.v2.everything({
@@ -60,8 +57,6 @@ exports.getNews = async (req, res, next) => {
       pageSize: 20,
       page: 1,
     });
-    console.log(response);
-    console.log(response.articles.length);
 
     res.status(200).json({
       articles: response.articles,

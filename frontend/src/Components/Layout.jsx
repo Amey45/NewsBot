@@ -12,7 +12,6 @@ const Layout = ({ children, onLogout, onSelectChat }) => {
     const loadChats = async () => {
       try {
         const response = await fetchChats();
-        console.log("chats: ", response);
         setChats(response);
         // window.location = "/";
       } catch (error) {
@@ -31,10 +30,9 @@ const Layout = ({ children, onLogout, onSelectChat }) => {
     try {
       if (newChatName.trim()) {
         const response = await addChat({ name: newChatName });
-        console.log("response ", response);
         chats.push(response.data.chat);
         setChats(chats);
-        alert("Chat added successfully");
+        alert("Topic added successfully");
 
         // window.location = "/";
         setNewChatName("");
@@ -45,7 +43,6 @@ const Layout = ({ children, onLogout, onSelectChat }) => {
     }
   };
 
-  //  console.log(JSON.stringify(chats, null, 2));
 
   return (
     <div className="layout">
